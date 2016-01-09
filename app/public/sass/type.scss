@@ -1,8 +1,8 @@
-html {
-    font-family : monospace;
-    font-size   : 15px;
+$font-stack: 'Source Sans Pro', 'Slabo 27px', 'Open Sans', monospace;
 
-    font-size   : 1em;
+html {
+    font-family : $font-stack;
+    font-size   : 15px;
     line-height : 1.4;
     height      : 100%;
 
@@ -21,4 +21,48 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
     margin-top : 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin        : 0;
+  color         : #484644;
+  line-height   : 1.5em;
+  font-family   : $font-stack;
+  font-weight   : 500;
+}
+
+h1 {
+  margin-bottom : .6em;
+  line-height   : 1.2em;
+  font-size     : 2.5em;
+}
+
+h2 {
+  margin-bottom : .75em;
+  line-height   : 1.5em;
+  font-size     : 2em;
+}
+
+h3 {
+  margin-bottom : 0;
+  line-height   : 2em;
+  font-size     : 1.5em;
+}
+
+h4 {
+  margin-bottom : 0;
+  line-height   : 2.33333333333em;
+  font-size     : 1.28571428571em;
+}
+
+h5 {
+  margin-bottom : 0;
+  line-height   : 1.5em;
+  font-size     : 1em;
+}
+
+h6 {
+  margin-bottom : 0;
+  line-height   : 1.75em;
+  font-size     : 0.85714285714em;
 }

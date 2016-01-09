@@ -1,15 +1,23 @@
 {
   "name": "grp.space.mob",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Mobile-friendly version of grp.space.mob",
   "main": "index.js",
   "scripts": {
     "clean": "gulp clean",
-    "build" : "gulp",
+    "build": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Dalton Mills (mills.dalton@gmail.com)",
+  "author": {
+    "name": "Dalton Mills",
+    "email": "mills.dalton@gmail.com",
+    "url": "http://ddmills.com"
+  },
   "license": "MIT",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/ddmills/grp.space.mob.git"
+  },
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-clean": "^0.3.1",

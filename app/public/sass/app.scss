@@ -1,3 +1,10 @@
+* { box-sizing : border-box; }
+
+
+$app-col-primary: #D87777;
+$app-col-secondary: #FBE8A4;
+$app-col-tertiary: #91C8E2;
+
 html {
     color : #333;
 
@@ -9,9 +16,9 @@ html {
     width   : 100%;
     height  : 24px;
 
-    background-color : #FBE8A4;
-    border-bottom    : 8px solid #91C8E2;
-    border-top       : 8px solid #D87777;
+    border-top       : 8px solid $app-col-primary;
+    background-color : $app-col-secondary;
+    border-bottom    : 8px solid $app-col-tertiary;
 }
 
 .container-wrapper {
@@ -35,8 +42,7 @@ html {
 }
 
 .app-navigation {
-    background-color : #efefef;
-    border-bottom    : 1px solid #ddd;
+    border-bottom : 1px dashed #ddd;
 }
 
 .nav-item, .nav-logo {
@@ -44,6 +50,11 @@ html {
     display : inline-block;
     padding : 8px 12px;
     color   : #444;
+}
+
+.nav-logo {
+    font-weight : bold;
+    color       : $app-col-primary;
 }
 
 .app-navigation > nav > :first-child {
