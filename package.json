@@ -4,6 +4,8 @@
   "description": "Mobile-friendly version of grp.space.mob",
   "main": "index.js",
   "scripts": {
+    "clean": "gulp clean",
+    "build" : "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Dalton Mills (mills.dalton@gmail.com)",
