@@ -1,8 +1,14 @@
 var
     gulp  = require('gulp'),
     sass  = require('gulp-sass'),
-    clean = require('gulp-clean')
+    clean = require('gulp-clean'),
+    debug = require('gulp-debug'),
+    gutil = require('gulp-util'),
+    child = require('child_process'),
+    fs    = require('fs')
 ;
+
+var SERVER = null;
 
 var path = {
     src : {
@@ -24,7 +30,7 @@ var path = {
 * Delete CSS from the build directory
 */
 gulp.task('clean-css', function() {
-    gulp
+    return gulp
         .src(path.dest.CSS, {read: false})
         .pipe(clean());
 });
@@ -33,7 +39,7 @@ gulp.task('clean-css', function() {
 * Delete HTML from the build directory
 */
 gulp.task('clean-ejs', function() {
-    gulp
+    return gulp
         .src(path.dest.EJS + '**/*.ejs', {read: false})
         .pipe(clean());
 });
@@ -42,7 +48,7 @@ gulp.task('clean-ejs', function() {
 * Delete the contents of the build directory
 */
 gulp.task('clean', function() {
-    gulp
+    return gulp
         .src(path.dest.ALL, {read: false})
         .pipe(clean());
 });
@@ -67,22 +73,54 @@ gulp.task('sass', ['clean-css'], function() {
 });
 
 /*
-* Delete javascript from the build directory
+* Delete serve javascript from the build directory
 */
-gulp.task('clean-scripts', function() {
-    gulp
-        .src(path.dest.ALL + 'serve.js', {read: false})
+gulp.task('serve:clean', function() {
+    return gulp
+        .src(path.dest.SERVE + 'serve.js', {read: false})
         .pipe(clean());
 });
 
-gulp.task('scripts', ['clean-scripts'], function() {
+/*
+ * Watch for when JS, EJS, or SCSS files change so they can be updated
+ */
+gulp.task('watch', function() {
+    gulp.watch(path.src.SERVE, ['serve:restart']);
+    gulp.watch(path.src.EJS, ['ejs']);
+    gulp.watch(path.src.SASS, ['sass']);
+});
+
+/*
+ * Build the server
+ */
+gulp.task('serve:build', ['serve:clean'], function() {
     return gulp
         .src(path.src.SERVE)
         .pipe(gulp.dest(path.dest.SERVE));
 });
 
-gulp.task('build-client', ['ejs', 'sass']);
-gulp.task('build-server', ['scripts']);
+/*
+ * Kill the node server
+ */
+gulp.task('serve:kill', function() {
+    if (SERVER != null) SERVER.kill('SIGINT');
+});
 
-gulp.task('build', ['build-client', 'build-server']);
-gulp.task('default', ['build']);
+/*
+ * Restart the node server
+ */
+gulp.task('serve:restart', ['serve:build', 'serve']);
+
+/*
+ * Start the node server
+ */
+gulp.task('serve', ['serve:build', 'serve:kill'], function() {
+    SERVER = child.spawn('node', ['build/serve.js']);
+    gutil.beep();
+});
+
+gulp.task('client:build', ['ejs', 'sass']);
+
+gulp.task('build', ['client:build', 'serve:build']);
+gulp.task('client', ['client:build']);
+gulp.task('default', ['client', 'serve', 'watch']);

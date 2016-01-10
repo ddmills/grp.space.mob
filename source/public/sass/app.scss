@@ -5,6 +5,7 @@ $app-col-primary: #D87777;
 $app-col-secondary: #FBE8A4;
 $app-col-tertiary: #91C8E2;
 
+$app-footer-col: #ccc;
 
 $nav-border: #e0e0e0;
 $nav-border-style: solid;
@@ -44,8 +45,23 @@ html {
 }
 
 .app-content {
-    padding : 20px 0px;
+    padding    : 20px 0px;
+    min-height : 240px;
 }
+
+.app-footer {
+    color       : $app-footer-col;
+    font-size   : 13px;
+    margin-top  : 40px;
+    padding     : 40px 0px;
+    border-top  : 1px dashed #ccc;
+}
+
+.app-footer > a {
+    color : $app-footer-col;
+}
+
+
 
 .app-navigation {
     padding-top   : 12px;

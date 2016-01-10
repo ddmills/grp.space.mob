@@ -2,11 +2,10 @@
   "name": "grp.space.share",
   "version": "0.1.0",
   "description": "Group collaboration site using WebRTC",
-  "main": "build/serve.js",
   "scripts": {
-    "start": "node build/serve.js",
+    "start": "gulp",
     "clean": "gulp clean",
-    "build": "gulp",
+    "build": "gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": {
@@ -26,6 +25,8 @@
   },
   "dependencies": {
     "ejs": "^2.3.4",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "gulp-debug": "^2.1.2",
+    "gulp-util": "^3.0.7"
   }
 }
