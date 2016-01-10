@@ -1,7 +1,7 @@
 {
-  "name": "grp.space.mob",
+  "name": "grp.space.share",
   "version": "0.1.0",
-  "description": "Mobile-friendly version of grp.space.mob",
+  "description": "Group collaboration site using WebRTC",
   "main": "index.js",
   "scripts": {
     "clean": "gulp clean",
@@ -16,7 +16,7 @@
   "license": "MIT",
   "repository" : {
     "type" : "git",
-    "url" : "https://github.com/ddmills/grp.space.mob.git"
+    "url" : "https://github.com/ddmills/grp.space.share.git"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
