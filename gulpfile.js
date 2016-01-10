@@ -5,23 +5,18 @@ var
 ;
 
 var path = {
-    client : {
-        src : {
-            ALL  : 'client',
-            SASS : 'client/sass/**/*.scss',
-            HTML : 'client/**/*.html'
-        },
-        dest : {
-            ALL  : 'build/public/',
-            CSS  : 'build/public/css/',
-            JS   : 'build/public/js/',
-            HTML : 'build/public/'
-        }
+    src : {
+        ALL   : 'source/',
+        SERVE : 'source/serve.js',
+        SASS  : 'source/public/sass/**/*.scss',
+        HTML  : 'source/public/**/*.html'
     },
-    server : {
-        src : {
-            ALL : 'server'
-        }
+    dest : {
+        ALL   : 'build/',
+        SERVE : 'build/',
+        CSS   : 'build/public/css/',
+        JS    : 'build/public/js/',
+        HTML  : 'build/public/'
     }
 }
 
@@ -30,7 +25,7 @@ var path = {
 */
 gulp.task('clean-css', function() {
     gulp
-        .src(path.client.dest.CSS, {read: false})
+        .src(path.dest.CSS, {read: false})
         .pipe(clean());
 });
 
@@ -39,7 +34,7 @@ gulp.task('clean-css', function() {
 */
 gulp.task('clean-html', function() {
     gulp
-        .src(path.client.dest.HTML + '**/*.html', {read: false})
+        .src(path.dest.HTML + '**/*.html', {read: false})
         .pipe(clean());
 });
 
@@ -48,7 +43,7 @@ gulp.task('clean-html', function() {
 */
 gulp.task('clean', function() {
     gulp
-        .src(path.client.dest.ALL, {read: false})
+        .src(path.dest.ALL, {read: false})
         .pipe(clean());
 });
 
@@ -57,8 +52,8 @@ gulp.task('clean', function() {
  */
 gulp.task('html', ['clean-html'], function() {
     return gulp
-        .src(path.client.src.HTML)
-        .pipe(gulp.dest(path.client.dest.HTML));
+        .src(path.src.HTML)
+        .pipe(gulp.dest(path.dest.HTML));
 });
 
 /*
@@ -66,12 +61,28 @@ gulp.task('html', ['clean-html'], function() {
  */
 gulp.task('sass', ['clean-css'], function() {
     return gulp
-        .src(path.client.src.SASS)
+        .src(path.src.SASS)
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest(path.client.dest.CSS));
+        .pipe(gulp.dest(path.dest.CSS));
+});
+
+/*
+* Delete javascript from the build directory
+*/
+gulp.task('clean-scripts', function() {
+    gulp
+        .src(path.dest.ALL + 'serve.js', {read: false})
+        .pipe(clean());
+});
+
+gulp.task('scripts', ['clean-scripts'], function() {
+    return gulp
+        .src(path.src.SERVE)
+        .pipe(gulp.dest(path.dest.SERVE));
 });
 
 gulp.task('build-client', ['html', 'sass']);
+gulp.task('build-server', ['scripts']);
 
-gulp.task('build', ['html', 'sass']);
+gulp.task('build', ['build-client', 'build-server']);
 gulp.task('default', ['build']);

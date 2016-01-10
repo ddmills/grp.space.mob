@@ -2,8 +2,9 @@
   "name": "grp.space.share",
   "version": "0.1.0",
   "description": "Group collaboration site using WebRTC",
-  "main": "index.js",
+  "main": "build/serve.js",
   "scripts": {
+    "start" : "node build/serve.js",
     "clean": "gulp clean",
     "build": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
