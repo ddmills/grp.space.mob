@@ -1,0 +1,16 @@
+<%- include('common/partials/header', {'nav' : false }) -%>
+<h3>
+    <i class='fa fa-fw fa-anchor'></i>
+    grp.space
+</h3>
+<label for='room'>
+    <input type='text' id='room' name='room'>
+</label>
+<button type='button' onclick='goto()'>go</button>
+<script>
+function goto() {
+    var name = document.getElementById('room').value;
+    location.href = 'at/' + encodeURIComponent(name);
+}
+</script>
+<%- include('common/partials/footer') -%>

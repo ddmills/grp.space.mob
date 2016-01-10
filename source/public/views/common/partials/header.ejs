@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang='en'>
+    <head>
+        <title>grp.space</title>
+        <link rel='stylesheet' href='/css/normalize.css'>
+        <link rel='stylesheet' href='/css/type.css'>
+        <link rel='stylesheet' href='/css/app.css'>
+        <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <span class='app-stripe'></span>
+        <% if (typeof nav != 'undefined' && nav) { %>
+            <%- include('navigation') -%>
+        <% } %>
+        <section class='container-wrapper'>
+            <div class='app-content container'>
