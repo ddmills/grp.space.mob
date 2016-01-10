@@ -15,13 +15,14 @@ var path = {
         ALL   : 'source/',
         SERVE : 'source/serve.js',
         SASS  : 'source/public/sass/**/*.scss',
-        EJS   : 'source/public/**/*.ejs'
+        EJS   : 'source/public/**/*.ejs',
+        JS    : 'source/public/**/*.js'
     },
     dest : {
         ALL   : 'build/',
         SERVE : 'build/',
         CSS   : 'build/public/css/',
-        JS    : 'build/public/js/',
+        JS    : 'build/public/',
         EJS   : 'build/public/'
     }
 }
@@ -41,6 +42,15 @@ gulp.task('clean-css', function() {
 gulp.task('clean-ejs', function() {
     return gulp
         .src(path.dest.EJS + '**/*.ejs', {read: false})
+        .pipe(clean());
+});
+
+/*
+* Delete JS from the build directory
+*/
+gulp.task('clean-js', function() {
+    return gulp
+        .src(path.dest.JS + '**/*.js', {read: false})
         .pipe(clean());
 });
 
@@ -70,6 +80,15 @@ gulp.task('sass', ['clean-css'], function() {
         .src(path.src.SASS)
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest(path.dest.CSS));
+});
+
+/*
+ * Copy JS files over
+ */
+gulp.task('js', ['clean-js'], function() {
+    return gulp
+        .src(path.src.JS)
+        .pipe(gulp.dest(path.dest.JS));
 });
 
 /*
@@ -119,7 +138,7 @@ gulp.task('serve', ['serve:build', 'serve:kill'], function() {
     gutil.beep();
 });
 
-gulp.task('client:build', ['ejs', 'sass']);
+gulp.task('client:build', ['js', 'ejs', 'sass']);
 
 gulp.task('build', ['client:build', 'serve:build']);
 gulp.task('client', ['client:build']);

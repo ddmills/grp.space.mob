@@ -1,0 +1,22 @@
+{
+  "name": "grp.space.share",
+  "description": "Group collaboration site using WebRTC",
+  "main": "",
+  "authors": [
+    "Dalton Mills"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ddmills/grp.space.share",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "webrtc-adapter": "~0.2.5"
+  }
+}
