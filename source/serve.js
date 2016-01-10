@@ -2,6 +2,18 @@ var express = require('express');
 
 var app = express();
 
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+app.set('views', __dirname + '/public/views');
 
-app.use('/', express.static(__dirname + '/public'));
+var router = express.Router();
+
+//app.use('/', express.static(__dirname + '/public'));
+router.get('/at/:room', function(req, res) {
+    var room = req.params.room;
+    res.render('room', { name : room });
+});
+
+app.use('/', router);
+
 app.listen(3000);
