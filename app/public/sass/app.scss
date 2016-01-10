@@ -1,14 +1,20 @@
 * { box-sizing : border-box; }
 
-
+$background: #fefefe;
 $app-col-primary: #D87777;
 $app-col-secondary: #FBE8A4;
 $app-col-tertiary: #91C8E2;
 
+
+$nav-border: #e0e0e0;
+$nav-border-style: solid;
+$nav-background: #EFEFEF;
+$nav-radius: 4px;
+
 html {
     color : #333;
 
-    background  : none repeat scroll 0% 0% #fefefe;
+    background  : none repeat scroll 0% 0% $background;
 }
 
 .app-stripe {
@@ -42,14 +48,30 @@ html {
 }
 
 .app-navigation {
-    border-bottom : 1px dashed #ddd;
+    padding-top   : 12px;
+    border-bottom : 1px $nav-border-style $nav-border;
+
+    background-color : $nav-background;
 }
 
 .nav-item, .nav-logo {
+    margin-bottom : -1px;
     float   : left;
     display : inline-block;
     padding : 8px 12px;
     color   : #444;
+}
+
+.nav-item.active {
+    border-bottom : 1px solid $background;
+    border-left   : 1px $nav-border-style $nav-border;
+    border-top    : 1px $nav-border-style $nav-border;
+    border-right  : 1px $nav-border-style $nav-border;
+
+    border-top-left-radius  : $nav-radius;
+    border-top-right-radius : $nav-radius;
+
+    background-color : $background;
 }
 
 .nav-logo {
@@ -61,7 +83,7 @@ html {
     margin-left : -12px;
 }
 
-.nav-item:hover {
+.nav-item:not(.active):hover {
     background-color : #ddd;
 }
 
