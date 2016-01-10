@@ -8,10 +8,14 @@ app.set('views', __dirname + '/public/views');
 
 var router = express.Router();
 
-//app.use('/', express.static(__dirname + '/public'));
+app.use('/', express.static(__dirname + '/public'));
+//app.use(express.static(__dirname + '/public/css'));
+//app.use('/static', express.static(__dirname + '/public'));
+
+
 router.get('/at/:room', function(req, res) {
     var room = req.params.room;
-    res.render('room', { name : room });
+    res.render('room/index.html', { name : room });
 });
 
 app.use('/', router);
