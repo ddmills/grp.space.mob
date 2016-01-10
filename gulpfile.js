@@ -1,27 +1,28 @@
 var
     gulp  = require('gulp'),
     sass  = require('gulp-sass'),
-    clean = require('gulp-clean')
+    clean = require('gulp-clean'),
+    debug = require('gulp-debug'),
+    gutil = require('gulp-util'),
+    child = require('child_process'),
+    fs    = require('fs')
 ;
 
+var SERVER = null;
+
 var path = {
-    client : {
-        src : {
-            ALL  : 'client',
-            SASS : 'client/sass/**/*.scss',
-            HTML : 'client/**/*.html'
-        },
-        dest : {
-            ALL  : 'build/public/',
-            CSS  : 'build/public/css/',
-            JS   : 'build/public/js/',
-            HTML : 'build/public/'
-        }
+    src : {
+        ALL   : 'source/',
+        SERVE : 'source/serve.js',
+        SASS  : 'source/public/sass/**/*.scss',
+        EJS   : 'source/public/**/*.ejs'
     },
-    server : {
-        src : {
-            ALL : 'server'
-        }
+    dest : {
+        ALL   : 'build/',
+        SERVE : 'build/',
+        CSS   : 'build/public/css/',
+        JS    : 'build/public/js/',
+        EJS   : 'build/public/'
     }
 }
 
@@ -29,17 +30,17 @@ var path = {
 * Delete CSS from the build directory
 */
 gulp.task('clean-css', function() {
-    gulp
-        .src(path.client.dest.CSS, {read: false})
+    return gulp
+        .src(path.dest.CSS, {read: false})
         .pipe(clean());
 });
 
 /*
 * Delete HTML from the build directory
 */
-gulp.task('clean-html', function() {
-    gulp
-        .src(path.client.dest.HTML + '**/*.html', {read: false})
+gulp.task('clean-ejs', function() {
+    return gulp
+        .src(path.dest.EJS + '**/*.ejs', {read: false})
         .pipe(clean());
 });
 
@@ -47,18 +48,18 @@ gulp.task('clean-html', function() {
 * Delete the contents of the build directory
 */
 gulp.task('clean', function() {
-    gulp
-        .src(path.client.dest.ALL, {read: false})
+    return gulp
+        .src(path.dest.ALL, {read: false})
         .pipe(clean());
 });
 
 /*
- * Copy HTML files over
+ * Copy EJS files over
  */
-gulp.task('html', ['clean-html'], function() {
+gulp.task('ejs', ['clean-ejs'], function() {
     return gulp
-        .src(path.client.src.HTML)
-        .pipe(gulp.dest(path.client.dest.HTML));
+        .src(path.src.EJS)
+        .pipe(gulp.dest(path.dest.EJS));
 });
 
 /*
@@ -66,12 +67,60 @@ gulp.task('html', ['clean-html'], function() {
  */
 gulp.task('sass', ['clean-css'], function() {
     return gulp
-        .src(path.client.src.SASS)
+        .src(path.src.SASS)
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest(path.client.dest.CSS));
+        .pipe(gulp.dest(path.dest.CSS));
 });
 
-gulp.task('build-client', ['html', 'sass']);
+/*
+* Delete serve javascript from the build directory
+*/
+gulp.task('serve:clean', function() {
+    return gulp
+        .src(path.dest.SERVE + 'serve.js', {read: false})
+        .pipe(clean());
+});
 
-gulp.task('build', ['html', 'sass']);
-gulp.task('default', ['build']);
+/*
+ * Watch for when JS, EJS, or SCSS files change so they can be updated
+ */
+gulp.task('watch', function() {
+    gulp.watch(path.src.SERVE, ['serve:restart']);
+    gulp.watch(path.src.EJS, ['ejs']);
+    gulp.watch(path.src.SASS, ['sass']);
+});
+
+/*
+ * Build the server
+ */
+gulp.task('serve:build', ['serve:clean'], function() {
+    return gulp
+        .src(path.src.SERVE)
+        .pipe(gulp.dest(path.dest.SERVE));
+});
+
+/*
+ * Kill the node server
+ */
+gulp.task('serve:kill', function() {
+    if (SERVER != null) SERVER.kill('SIGINT');
+});
+
+/*
+ * Restart the node server
+ */
+gulp.task('serve:restart', ['serve:build', 'serve']);
+
+/*
+ * Start the node server
+ */
+gulp.task('serve', ['serve:build', 'serve:kill'], function() {
+    SERVER = child.spawn('node', ['build/serve.js']);
+    gutil.beep();
+});
+
+gulp.task('client:build', ['ejs', 'sass']);
+
+gulp.task('build', ['client:build', 'serve:build']);
+gulp.task('client', ['client:build']);
+gulp.task('default', ['client', 'serve', 'watch']);

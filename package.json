@@ -2,10 +2,10 @@
   "name": "grp.space.share",
   "version": "0.1.0",
   "description": "Group collaboration site using WebRTC",
-  "main": "index.js",
   "scripts": {
+    "start": "gulp",
     "clean": "gulp clean",
-    "build": "gulp",
+    "build": "gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": {
@@ -14,13 +14,19 @@
     "url": "http://ddmills.com"
   },
   "license": "MIT",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/ddmills/grp.space.share.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ddmills/grp.space.share.git"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-clean": "^0.3.1",
     "gulp-sass": "^2.1.1"
+  },
+  "dependencies": {
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "gulp-debug": "^2.1.2",
+    "gulp-util": "^3.0.7"
   }
 }
