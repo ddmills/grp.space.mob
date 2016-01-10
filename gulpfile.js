@@ -9,14 +9,14 @@ var path = {
         ALL   : 'source/',
         SERVE : 'source/serve.js',
         SASS  : 'source/public/sass/**/*.scss',
-        HTML  : 'source/public/**/*.html'
+        EJS   : 'source/public/**/*.ejs'
     },
     dest : {
         ALL   : 'build/',
         SERVE : 'build/',
         CSS   : 'build/public/css/',
         JS    : 'build/public/js/',
-        HTML  : 'build/public/'
+        EJS   : 'build/public/'
     }
 }
 
@@ -32,9 +32,9 @@ gulp.task('clean-css', function() {
 /*
 * Delete HTML from the build directory
 */
-gulp.task('clean-html', function() {
+gulp.task('clean-ejs', function() {
     gulp
-        .src(path.dest.HTML + '**/*.html', {read: false})
+        .src(path.dest.EJS + '**/*.ejs', {read: false})
         .pipe(clean());
 });
 
@@ -48,12 +48,12 @@ gulp.task('clean', function() {
 });
 
 /*
- * Copy HTML files over
+ * Copy EJS files over
  */
-gulp.task('html', ['clean-html'], function() {
+gulp.task('ejs', ['clean-ejs'], function() {
     return gulp
-        .src(path.src.HTML)
-        .pipe(gulp.dest(path.dest.HTML));
+        .src(path.src.EJS)
+        .pipe(gulp.dest(path.dest.EJS));
 });
 
 /*
@@ -81,7 +81,7 @@ gulp.task('scripts', ['clean-scripts'], function() {
         .pipe(gulp.dest(path.dest.SERVE));
 });
 
-gulp.task('build-client', ['html', 'sass']);
+gulp.task('build-client', ['ejs', 'sass']);
 gulp.task('build-server', ['scripts']);
 
 gulp.task('build', ['build-client', 'build-server']);
