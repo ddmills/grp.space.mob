@@ -5,15 +5,23 @@ var
 ;
 
 var path = {
-    src : {
-        ALL  : 'app/public/',
-        SASS : 'app/public/sass/**/*.scss',
-        HTML : 'app/public/**/*.html'
+    client : {
+        src : {
+            ALL  : 'client',
+            SASS : 'client/sass/**/*.scss',
+            HTML : 'client/**/*.html'
+        },
+        dest : {
+            ALL  : 'build/public/',
+            CSS  : 'build/public/css/',
+            JS   : 'build/public/js/',
+            HTML : 'build/public/'
+        }
     },
-    dest : {
-        ALL  : 'build/',
-        CSS  : 'build/public/css/',
-        HTML : 'build/public/'
+    server : {
+        src : {
+            ALL : 'server'
+        }
     }
 }
 
@@ -22,7 +30,7 @@ var path = {
 */
 gulp.task('clean-css', function() {
     gulp
-        .src(path.dest.CSS, {read: false})
+        .src(path.client.dest.CSS, {read: false})
         .pipe(clean());
 });
 
@@ -31,7 +39,7 @@ gulp.task('clean-css', function() {
 */
 gulp.task('clean-html', function() {
     gulp
-        .src(path.dest.HTML + '**/*.html', {read: false})
+        .src(path.client.dest.HTML + '**/*.html', {read: false})
         .pipe(clean());
 });
 
@@ -40,7 +48,7 @@ gulp.task('clean-html', function() {
 */
 gulp.task('clean', function() {
     gulp
-        .src(path.dest.ALL, {read: false})
+        .src(path.client.dest.ALL, {read: false})
         .pipe(clean());
 });
 
@@ -49,8 +57,8 @@ gulp.task('clean', function() {
  */
 gulp.task('html', ['clean-html'], function() {
     return gulp
-        .src(path.src.HTML)
-        .pipe(gulp.dest(path.dest.HTML));
+        .src(path.client.src.HTML)
+        .pipe(gulp.dest(path.client.dest.HTML));
 });
 
 /*
@@ -58,10 +66,12 @@ gulp.task('html', ['clean-html'], function() {
  */
 gulp.task('sass', ['clean-css'], function() {
     return gulp
-        .src(path.src.SASS)
+        .src(path.client.src.SASS)
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest(path.dest.CSS));
+        .pipe(gulp.dest(path.client.dest.CSS));
 });
+
+gulp.task('build-client', ['html', 'sass']);
 
 gulp.task('build', ['html', 'sass']);
 gulp.task('default', ['build']);
