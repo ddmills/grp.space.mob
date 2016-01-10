@@ -5,6 +5,12 @@
                 &middot; <a href='./'>grp.space</a> &middot;
             </div>
         </footer>
+        <script src="/vendor/jquery/dist/jquery.min.js"></script>
         <script src="/vendor/webrtc-adapter/adapter.js"></script>
+        <% if (typeof scripts == 'object') { %>
+            <% for (var i in scripts) { %>
+                <script src="<%= scripts[i] %>"></script>
+            <% } %>
+        <% } %>
     </body>
 </html>

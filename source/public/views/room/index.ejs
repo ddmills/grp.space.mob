@@ -2,4 +2,9 @@
 
 <h3>Welcome to <%= room %></h3>
 
-<%- include('../common/partials/footer') -%>
+<video id='vid-self' autoplay></video>
+
+<%- include('../common/partials/footer', { scripts : [
+    '/js/common.js',
+    '/js/room.js'
+]}) -%>

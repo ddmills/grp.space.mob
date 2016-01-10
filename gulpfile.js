@@ -107,6 +107,7 @@ gulp.task('watch', function() {
     gulp.watch(path.src.SERVE, ['serve:restart']);
     gulp.watch(path.src.EJS, ['ejs']);
     gulp.watch(path.src.SASS, ['sass']);
+    gulp.watch(path.src.JS, ['js']);
 });
 
 /*

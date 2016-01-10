@@ -7,10 +7,4 @@
     <input type='text' id='room' name='room'>
 </label>
 <button type='button' onclick='goto()'>go</button>
-<script>
-function goto() {
-    var name = document.getElementById('room').value;
-    location.href = 'at/' + encodeURIComponent(name);
-}
-</script>
-<%- include('common/partials/footer') -%>
+<%- include('common/partials/footer', { scripts : ['/js/home.js'] }) -%>
