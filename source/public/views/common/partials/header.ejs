@@ -11,5 +11,8 @@
     </head>
     <body>
         <span class='app-stripe'></span>
+        <% if (typeof nav != 'undefined' && nav) { %>
+            <%- include('navigation') -%>
+        <% } %>
         <section class='container-wrapper'>
             <div class='app-content container'>
