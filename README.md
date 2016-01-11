@@ -3,5 +3,6 @@
 
 ```
 npm install
-npm start
+bower install
+gulp
 ```
