@@ -1,10 +1,11 @@
 var express = require('express');
-var PORT = 3000;
 
 var app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/public/views');
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3002);
+app.set('ip', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
 
 var router = express.Router();
 
@@ -20,5 +21,5 @@ router.get('/', function(req, res) {
 app.use('/', express.static(__dirname + '/public'));
 app.use('/', router);
 
-console.log('Serving on: ' + PORT);
-app.listen(PORT);
+console.log('Serving on: ' + app.get('ip') + ':' + app.get('port'));
+app.listen(app.get('port'), app.get('ip'));

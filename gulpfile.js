@@ -144,3 +144,5 @@ gulp.task('client:build', ['js', 'ejs', 'sass']);
 gulp.task('build', ['client:build', 'serve:build']);
 gulp.task('client', ['client:build']);
 gulp.task('default', ['client', 'serve', 'watch']);
+
+gulp.task('production', ['client', 'serve']);
