@@ -16,14 +16,16 @@ var path = {
         SERVE : 'source/serve.js',
         SASS  : 'source/public/sass/**/*.scss',
         EJS   : 'source/public/**/*.ejs',
-        JS    : 'source/public/**/*.js'
+        JS    : 'source/public/**/*.js',
+        PACK  : 'source/package.json'
     },
     dest : {
         ALL   : 'build/',
         SERVE : 'build/',
         CSS   : 'build/public/css/',
         JS    : 'build/public/',
-        EJS   : 'build/public/'
+        EJS   : 'build/public/',
+        PACK  : 'build/'
     }
 }
 
@@ -51,6 +53,15 @@ gulp.task('clean-ejs', function() {
 gulp.task('clean-js', function() {
     return gulp
         .src(path.dest.JS + '**/*.js', {read: false})
+        .pipe(clean());
+});
+
+/*
+* Delete package.json from the build directory
+*/
+gulp.task('clean-pack', function() {
+    return gulp
+        .src(path.dest.PACK + 'package.json', {read: false})
         .pipe(clean());
 });
 
@@ -89,6 +100,15 @@ gulp.task('js', ['clean-js'], function() {
     return gulp
         .src(path.src.JS)
         .pipe(gulp.dest(path.dest.JS));
+});
+
+/*
+ * Copy package.json over
+ */
+gulp.task('pack', ['clean-pack'], function() {
+    return gulp
+        .src(path.src.PACK)
+        .pipe(gulp.dest(path.dest.PACK));
 });
 
 /*
@@ -145,4 +165,4 @@ gulp.task('build', ['client:build', 'serve:build']);
 gulp.task('client', ['client:build']);
 gulp.task('default', ['client', 'serve', 'watch']);
 
-gulp.task('production', ['client', 'serve']);
+gulp.task('production', ['client', 'serve', 'pack']);

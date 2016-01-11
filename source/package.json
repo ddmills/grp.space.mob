@@ -1,0 +1,23 @@
+{
+  "name": "grp.space.share",
+  "version": "0.1.0",
+  "description": "Group collaboration site using WebRTC",
+  "main": "serve.js",
+  "scripts": {
+    "start": "node serve.js"
+  },
+  "author": {
+    "name": "Dalton Mills",
+    "email": "mills.dalton@gmail.com",
+    "url": "http://ddmills.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ddmills/grp.space.share.git"
+  },
+  "dependencies": {
+    "ejs": "^2.3.4",
+    "express": "^4.13.3"
+  }
+}
