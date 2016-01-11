@@ -1,8 +1,11 @@
 <%- include('../common/partials/header') -%>
 
-<h3>Welcome to <%= room %></h3>
+<h3>[<%= room %>]</h3>
 
-<video id='vid-self' autoplay></video>
+<div id='video-remotes'>
+</div>
+
+<video height='300' class='video-local' id='video-local' autoplay></video>
 
 <%- include('../common/partials/footer', { scripts : [
     '/js/common.js',

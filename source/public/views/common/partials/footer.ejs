@@ -2,11 +2,12 @@
         </section>
         <footer class='container-wrapper'>
             <div class='app-footer container'>
-                &middot; <a href='./'>grp.space</a> &middot;
+                &middot; <a href='/'>grp.space</a> &middot;
             </div>
         </footer>
+        <%- include('env', env) -%>
         <script src="/vendor/jquery/dist/jquery.min.js"></script>
-        <script src="/vendor/webrtc-adapter/adapter.js"></script>
+        <script src="/vendor/simplewebrtc.bundle/index.js"></script>
         <% if (typeof scripts == 'object') { %>
             <% for (var i in scripts) { %>
                 <script src="<%= scripts[i] %>"></script>

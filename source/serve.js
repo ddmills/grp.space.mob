@@ -10,7 +10,7 @@ var router = express.Router();
 
 router.get('/at/:room', function(req, res) {
     var room = req.params.room;
-    res.render('room/index', { room : room });
+    res.render('room/index', { room : room, env : { 'room' : room } });
 });
 
 router.get('/', function(req, res) {
