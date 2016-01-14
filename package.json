@@ -6,7 +6,7 @@
     "start": "gulp",
     "clean": "gulp clean",
     "build": "gulp build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"<3\""
   },
   "author": {
     "name": "Dalton Mills",
@@ -21,8 +21,7 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-clean": "^0.3.1",
-    "gulp-sass": "^2.1.1",
-    "jshint": "^2.8.0"
+    "gulp-sass": "^2.1.1"
   },
   "dependencies": {
     "ejs": "^2.3.4",
