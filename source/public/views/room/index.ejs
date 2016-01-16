@@ -2,10 +2,12 @@
 
 <p>[<%= room %>]</p>
 
-<div class='video-remotes' id='video-remotes'>
+<div class='videos' id='video-remotes'>
+    <div class='video-container' id='video-local'>
+        <video class='video-local video' id='video-local-vid' autoplay></video>
+        <div class='meter'><span class='meter-value' style='height: 25%'></span></div>
+    </div>
 </div>
-
-<video class='video-local video' id='video-local' autoplay></video>
 
 <%- include('../common/partials/footer', { scripts : [
     '/js/common.js',

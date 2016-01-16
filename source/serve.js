@@ -14,12 +14,16 @@ router.get('/at/:room', function(req, res) {
     res.render('room/index', { room : room, env : { 'room' : room } });
 });
 
+router.get('/style', function(req, res) {
+    res.render('style');
+});
+
 router.get('/', function(req, res) {
     res.render('index');
 });
 
 app.use('/', express.static(__dirname + '/public'));
-app.use('/', router);
+// app.use('/', router);
 
 console.log('Serving on: ' + app.get('ip') + ':' + app.get('port'));
 app.listen(app.get('port'), app.get('ip'));

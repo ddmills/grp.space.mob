@@ -27,6 +27,7 @@
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "gulp-debug": "^2.1.2",
-    "gulp-util": "^3.0.7"
+    "gulp-util": "^3.0.7",
+    "socket.io": "^1.4.4"
   }
 }

@@ -5,11 +5,13 @@ $app-col-primary: #D87777;
 $app-col-secondary: #FBE8A4;
 $app-col-tertiary: #91C8E2;
 
+$app-font-col: #333;
+
 $app-footer-col: #ccc;
 
 $nav-border: #e0e0e0;
 $nav-border-style: solid;
-$nav-background: #EFEFEF;
+$nav-background: #F5F5F5;
 $nav-radius: 4px;
 
 html {
@@ -34,7 +36,7 @@ html {
 }
 
 .container {
-    width        : 960px;
+    width        : 680px;
     margin-left  : auto;
     margin-right : auto;
 
@@ -61,6 +63,13 @@ html {
     color : $app-footer-col;
 }
 
+textarea {
+    width: 100%;
+    resize: none;
+    padding: 4px 6px;
+    line-height: 1.6em;
+    height: 120px;
+}
 
 
 .app-navigation {
@@ -92,7 +101,6 @@ html {
 
 .nav-logo {
     font-weight : bold;
-    color       : $app-col-primary;
 }
 
 .app-navigation > nav > :first-child {

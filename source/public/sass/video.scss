@@ -1,14 +1,27 @@
-.video-remotes > video {
-    border : 1px solid #333;
-    vertical-align: top;
-    height : 200px;
+.video-container {
+    position: relative;
+    width: 33.33333%;
+    height: 170px;
     background-color: #666;
+    float: left;
 }
 
-.video-remotes {
-    padding : 8px 0px;
+.video-container video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
-.video-local {
-    height : 100px;
+.video-container .meter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+}
+
+.meter-value {
+    height: 100%;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.35);
 }

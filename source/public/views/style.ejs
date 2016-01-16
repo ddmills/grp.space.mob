@@ -1,0 +1,157 @@
+<%- include('common/partials/header', {'nav' : true }) -%>
+
+<div class='videos' id='video-remotes'>
+    <div class='video-container' id='video-local'>
+        <video class='video-local video' id='video-local-vid' autoplay></video>
+        <div class='meter'>
+            <span class='meter-value' style='height: 25%'></span>
+        </div>
+    </div>
+    <div class='video-container' id='video-local'>
+        <video class='video-local video' id='video-local-vid' autoplay></video>
+        <div class='meter'>
+            <span class='meter-value' style='height: 25%'></span>
+        </div>
+    </div>
+    <div class='video-container' id='video-local'>
+        <video class='video-local video' id='video-local-vid' autoplay></video>
+        <div class='meter'>
+            <span class='meter-value' style='height: 25%'></span>
+        </div>
+    </div>
+    <div class='video-container' id='video-local'>
+        <video class='video-local video' id='video-local-vid' autoplay></video>
+        <div class='meter'>
+            <span class='meter-value' style='height: 25%'></span>
+        </div>
+    </div>
+    <span class='clearfix'></span>
+</div>
+
+<h1>Deployment Pipeline</h1>
+<p>We have a continuous-integration deployment, made easy with Envoyer. Envoyer provides zero-downtime deployment by pulling code to the production EC2 instance, performing deployment steps on tests on the code, and then directing nginx to the new code if passing.</p>
+
+<h2>Hello World</h2>
+<p>There are four databases for this project. Tests are generally written to use Database Transactions, which reset the database after each Test Case. The Test database is also wiped on deployment before tests are ran.</p>
+<ol>
+    <li>This is a big ole test</li>
+    <li>Homestead</li>
+    <li>Additional chat</li>
+    <li>This is a big ole test</li>
+</ol>
+
+<h3>Workstation Setup</h3>
+<p>If this is your first time working with a PHP/Laravel project, you may need to install Composer.</p>
+
+<h4>Deployment Stack</h4>
+<p>For development, we use a virtual machine in order to normalize the development environment, so the type of machine that you're developing on doesn't matter as much. It also mimics the production environment as much as possible.</p>
+<ul>
+    <li>This is a big ole test</li>
+    <li>Homestead</li>
+    <li>Additional chat</li>
+    <li>This is a big ole test</li>
+</ul>
+
+<h5>Deployment Pipeline</h5>
+<p>We have a continuous-integration deployment, made easy with Envoyer. Envoyer provides zero-downtime deployment by pulling code to the production EC2 instance, performing deployment steps on tests on the code, and then directing nginx to the new code if passing.</p>
+
+<h1><i class='fa fa-fw fa-globe'></i> Chat</h1>
+
+<div class='chat-container'>
+    <div class='chat-entries'>
+        <div class='chat-entry'>
+            <div class='chat-entry-avatar'>
+                DM
+            </div>
+            <div class='chat-entry-header'>
+                <span class='chat-entry-author'>
+                    ddmills
+                </span>
+                <span class='chat-entry-date'>
+                    Fri Jan 15 7:23:22
+                </span>
+            </div>
+            <div class='chat-entry-content'>
+                <p>
+                    Yo man this chat box is insane..
+                </p>
+            </div>
+        </div>
+        <div class='chat-entry'>
+            <div class='chat-entry-avatar'>
+                BH
+            </div>
+            <div class='chat-entry-header'>
+                <span class='chat-entry-author'>
+                    bhalbur
+                </span>
+                <span class='chat-entry-date'>
+                    Fri Jan 15 7:23:22
+                </span>
+            </div>
+            <div class='chat-entry-content'>
+                <p>
+                    We have a continuous-integration deployment, made easy with Envoyer. Envoyer provides zero-downtime deployment by pulling code to the production EC2 instance, performing deployment steps on tests on the code, and then directing nginx to the new code if passing.
+                </p>
+            </div>
+        </div>
+        <div class='chat-entry'>
+            <div class='chat-entry-avatar'>
+                CD
+            </div>
+            <div class='chat-entry-header'>
+                <span class='chat-entry-author'>
+                    chandydandy
+                </span>
+                <span class='chat-entry-date'>
+                    Fri Jan 15 7:23:22
+                </span>
+            </div>
+            <div class='chat-entry-content'>
+                <p>vote 4 bernie</p>
+            </div>
+        </div>
+        <div class='chat-entry'>
+            <div class='chat-entry-avatar'>
+                BH
+            </div>
+            <div class='chat-entry-header'>
+                <span class='chat-entry-author'>
+                    bhalbur
+                </span>
+                <span class='chat-entry-date'>
+                    Fri Jan 15 7:23:22
+                </span>
+            </div>
+            <div class='chat-entry-content'>
+                <p>
+                    We have a continuous-integration deployment, made easy with Envoyer. Envoyer provides zero-downtime deployment by pulling code to the production EC2 instance, performing deployment steps on tests on the code, and then directing nginx to the new code if passing.
+                </p>
+                <p>
+                    For development, we use a virtual machine in order to normalize the development environment, so the type of machine that you're developing on doesn't matter as much. It also mimics the production environment as much as possible.
+                </p>
+            </div>
+        </div>
+        <div class='chat-entry'>
+            <div class='chat-entry-avatar'>
+                TY
+            </div>
+            <div class='chat-entry-header'>
+                <span class='chat-entry-author'>
+                    tyen
+                </span>
+                <span class='chat-entry-date'>
+                    Fri Jan 15 7:23:22
+                </span>
+            </div>
+            <div class='chat-entry-content'>
+                <p>Yol0 sweg</p>
+            </div>
+        </div>
+    </div>
+    <div class='chat-control'>
+        <input type='text' class='chat-input'></input>
+    </div>
+</div>
+
+<%- include('common/partials/footer') -%>
