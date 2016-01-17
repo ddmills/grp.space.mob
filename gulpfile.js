@@ -155,7 +155,7 @@ gulp.task('serve:restart', ['serve:build', 'serve']);
  * Start the node server
  */
 gulp.task('serve', ['serve:build', 'serve:kill'], function() {
-    SERVER = child.spawn('node', ['build/serve.js']);
+    SERVER = child.spawn('node', ['build/serve.js'], { stdio: 'inherit' });
     gutil.beep();
 });
 

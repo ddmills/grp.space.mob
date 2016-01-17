@@ -1,15 +1,27 @@
 <%- include('../common/partials/header') -%>
-
-<p>[<%= room %>]</p>
-
-<div class='videos' id='video-remotes'>
-    <div class='video-container' id='video-local'>
-        <video class='video-local video' id='video-local-vid' autoplay></video>
-        <div class='meter'><span class='meter-value' style='height: 25%'></span></div>
+<section class='page-controls container-wrapper'>
+    <div class='container'>
+        <h3 class='page-title'>grp.space/at/<%= room %></h3>
+        <div class='page-actions'>
+            <button class='page-action'>Action 1</button>
+            <button class='page-action'>Action 2</button>
+            <button class='page-action'>Action 3</button>
+        </div>
+        <span class='clearfix'></span>
     </div>
-</div>
+</section>
 
+<section class='container-wrapper'>
+    <div class='app-content container'>
+
+
+        <%- include('../partials/video.ejs') -%>
+        <%- include('../partials/chat.ejs') -%>
+
+    </div>
+</section>
 <%- include('../common/partials/footer', { scripts : [
     '/js/common.js',
+    '/js/chat.js',
     '/js/room.js'
 ]}) -%>

@@ -8,11 +8,10 @@
         <link rel='stylesheet' href='/css/video.css'>
         <link rel='stylesheet' href='/css/chat.css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <script src="https://cdn.socket.io/socket.io-1.4.3.js"></script>
     </head>
     <body>
         <span class='app-stripe'></span>
         <% if (typeof nav != 'undefined' && nav) { %>
             <%- include('navigation') -%>
         <% } %>
-        <section class='container-wrapper'>
-            <div class='app-content container'>

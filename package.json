@@ -1,7 +1,7 @@
 {
   "name": "grp.space.share",
   "version": "0.1.0",
-  "description": "Group collaboration site using WebRTC",
+  "description": "Group Space",
   "scripts": {
     "start": "gulp",
     "clean": "gulp clean",

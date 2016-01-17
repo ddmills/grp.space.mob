@@ -1,22 +1,23 @@
 * { box-sizing : border-box; }
 
-$background: #fefefe;
-$app-col-primary: #D87777;
-$app-col-secondary: #FBE8A4;
-$app-col-tertiary: #91C8E2;
+$background        : #fefefe;
+$app-col-primary   : #D87777;
+$app-col-secondary : #FBE8A4;
+$app-col-tertiary  : #91C8E2;
 
-$app-font-col: #333;
+$app-font-col : #333;
+$app-logo-col : #444;
+$app-footer-col : #ccc;
 
-$app-footer-col: #ccc;
 
-$nav-border: #e0e0e0;
-$nav-border-style: solid;
-$nav-background: #F5F5F5;
-$nav-radius: 4px;
+$nav-border       : #e0e0e0;
+$nav-radius       : 4px;
+$nav-border-style : solid;
+$nav-background   : #F5F5F5;
 
 html {
-    color : #333;
-
+    height : 100%;
+    color  : $app-font-col;
     background  : none repeat scroll 0% 0% $background;
 }
 
@@ -39,11 +40,29 @@ html {
     width        : 680px;
     margin-left  : auto;
     margin-right : auto;
+}
 
-    /* TEMP
-    border-left  : 1px solid #ccc;
-    border-right : 1px solid #ccc;
-    */
+.page-controls {
+    background-color : #F5E8F3;
+    border-bottom    : 1px solid #FFD4FC;
+}
+.page-title {
+    float   : left;
+    margin  : 0;
+    padding : 16px 0px;
+    color   : #D87777;
+}
+.page-actions {
+    float   : right;
+    padding : 16px 0px;
+}
+.page-action {
+    float: left;
+    background-color: #fff;
+    border: 1px solid #FFD4FC;
+    padding: 4px 12px;
+    margin: 0px 3px;
+    border-radius: 4px;
 }
 
 .app-content {
@@ -63,28 +82,19 @@ html {
     color : $app-footer-col;
 }
 
-textarea {
-    width: 100%;
-    resize: none;
-    padding: 4px 6px;
-    line-height: 1.6em;
-    height: 120px;
-}
-
-
 .app-navigation {
-    padding-top   : 12px;
-    border-bottom : 1px $nav-border-style $nav-border;
-
+    padding-top      : 12px;
+    border-bottom    : 1px $nav-border-style $nav-border;
     background-color : $nav-background;
 }
 
 .nav-item, .nav-logo {
-    margin-bottom : -1px;
     float   : left;
     display : inline-block;
     padding : 8px 12px;
     color   : #444;
+
+    margin-bottom : -1px;
 }
 
 .nav-item.active {
@@ -101,6 +111,7 @@ textarea {
 
 .nav-logo {
     font-weight : bold;
+    color       : $app-logo-col;
 }
 
 .app-navigation > nav > :first-child {

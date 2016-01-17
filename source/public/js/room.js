@@ -19,7 +19,6 @@ webrtc.on('videoAdded', function (video, peer) {
 
     video.oncontextmenu = function () { return false; };
 
-
     var vol = $('<div class="meter">');
 
     vol.append('<span class="meter-value">');
