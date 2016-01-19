@@ -1,8 +1,14 @@
+require('dotenv').load();
+
 var
     express  = require('express'),
     http     = require('http'),
-    socketio = require('socket.io')
+    socketio = require('socket.io'),
+    dbconfig = require('./db-config.js'),
+    mongoose = require('mongoose')
 ;
+
+mongoose.connect(dbconfig.url);
 
 var app    = express();
 var server = http.Server(app);

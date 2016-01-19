@@ -3,3 +3,4 @@ node_modules
 source/public/vendor/*
 build/*
 *.log
+*.env

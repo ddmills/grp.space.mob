@@ -13,10 +13,11 @@ var SERVER = null;
 var path = {
     src : {
         ALL   : 'source/',
-        SERVE : 'source/serve.js',
+        SERVE : 'source/*.js',
         SASS  : 'source/public/sass/**/*.scss',
         EJS   : 'source/public/**/*.ejs',
         JS    : 'source/public/**/*.js',
+        ENV   : '.env',
         PACK  : 'source/package.json'
     },
     dest : {
@@ -25,6 +26,7 @@ var path = {
         CSS   : 'build/public/css/',
         JS    : 'build/public/',
         EJS   : 'build/public/',
+        ENV   : 'build/',
         PACK  : 'build/'
     }
 }
@@ -134,9 +136,13 @@ gulp.task('watch', function() {
  * Build the server
  */
 gulp.task('serve:build', ['serve:clean'], function() {
-    return gulp
+    gulp
         .src(path.src.SERVE)
         .pipe(gulp.dest(path.dest.SERVE));
+
+    return gulp
+        .src(path.src.ENV)
+        .pipe(gulp.dest(path.dest.ENV));
 });
 
 /*
